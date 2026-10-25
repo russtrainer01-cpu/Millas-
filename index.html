@@ -478,7 +478,7 @@ function viewPrize() {
 }
 async function savePrize(w, patch) {
   var cur = prizeInfo(w), d = { icon: patch.icon || cur.icon, name: (patch.name || cur.name) };
-  try { await db.collection("tasks").doc("cfg_prize_" + w).set(d); toast("Guardado"); } catch (e) { toast("No se pudo guardar"); }
+  try { await db.doc("tasks/cfg_prize_" + w).set(d); toast("Guardado"); } catch (e) { toast("No se pudo guardar"); }
 }
 function viewHome() {
   var s = scores(), ph = phase(), out = header(true), ban = "";
