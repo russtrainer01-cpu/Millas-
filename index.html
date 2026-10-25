@@ -277,6 +277,43 @@ body { background: radial-gradient(110% 38% at 50% 14%, rgba(232,182,110,.16), t
 .pz .crown { width: 30px; height: 30px; background: rgba(0,0,0,.2); } .pz .go { width: 40px; height: 40px; background: rgba(0,0,0,.22); }
 .pv .pn { font-family: var(--serif); font-weight: 600; }
 nav { background: #1c120d; border-top: 1px solid rgba(232,182,110,.25); } nav button { font-size: 13px; } nav svg { width: 26px; height: 26px; }
+
+/* ===== ilustraciones propias + pantalla compacta ===== */
+.app { position: relative; padding-top: 6px; }
+.top.big { position: absolute; right: 12px; top: 8px; z-index: 6; margin: 0; } .top.big .tools { padding: 0; gap: 6px; }
+.theme-btn { width: 36px; height: 36px; } .theme-btn svg { width: 17px; height: 17px; }
+.hero { text-align: center; margin: 40px 0 0; }
+.hw { position: relative; width: min(54vw, 214px); margin: 0 auto; }
+.hh { position: relative; width: 100%; aspect-ratio: 700 / 555; z-index: 2; animation: hfloat 6s ease-in-out infinite; filter: drop-shadow(0 8px 14px rgba(0,0,0,.45)); }
+.hglass { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.lq { position: absolute; inset: 0; z-index: 1; background: rgba(14,7,4,.45); -webkit-mask-size: 100% 100%; mask-size: 100% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; overflow: hidden; }
+.lq svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hbase { position: absolute; left: 50%; bottom: -12%; width: 118%; transform: translateX(-50%); z-index: 1; filter: drop-shadow(0 8px 10px rgba(0,0,0,.4)); }
+.liq { transition: transform 1.6s cubic-bezier(.3,.7,.2,1); }
+.wv { animation: wslide 4.5s linear infinite; } .wv2 { animation: wslide2 7s linear infinite; }
+@keyframes wslide { from { transform: translateX(0); } to { transform: translateX(-50px); } }
+@keyframes wslide2 { from { transform: translateX(-50px); } to { transform: translateX(0); } }
+.titulo { display: block; width: min(60vw, 250px); height: auto; margin: 20px auto 0; } .titulo.sm { width: 150px; margin: 0; }
+.top.mini { margin-bottom: 4px; }
+.season1 { text-align: center; margin: 8px 0 12px; } .season1 b { display: block; font-size: 12.5px; font-weight: 500; letter-spacing: .18em; color: var(--fg); } .season1 em { display: block; font-style: normal; font-size: 10.5px; letter-spacing: .2em; color: var(--gold); margin-top: 2px; }
+.duel { padding: 10px 16px 8px; margin-bottom: 12px; border-radius: 18px; }
+.scs .vsep { height: 52px; }
+.scs .sc { display: grid; grid-template-columns: auto auto; column-gap: 8px; align-items: baseline; justify-content: start; } .scs .sc.b { justify-content: end; }
+.scs .sc span { grid-column: 1 / -1; font-size: 12px; } .scs .sc b { font-size: 38px; } .scs .sc small { font-size: 11px; }
+.bar2 { height: 12px; margin: 8px 0 2px; } .lead { margin: 8px 0 0; font-size: 12px; }
+.sect { margin: 0 0 10px; } .sect span { font-size: 13px; }
+.pzs { gap: 10px; margin-bottom: 12px; }
+.pz { padding: 10px 8px 10px; border-radius: 18px; }
+.pz .ic { width: 70px; height: 56px; margin: 4px auto 4px; display: flex; align-items: center; justify-content: center; } .pz .ic img { max-width: 100%; max-height: 100%; display: block; filter: drop-shadow(0 4px 6px rgba(0,0,0,.45)); }
+.pz small { font-size: 10px; } .pz b { font-size: 15px; line-height: 1.15; margin: 4px 0 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.pz .crown { width: 22px; height: 22px; top: 7px; right: 7px; } .pz .crown svg { width: 12px; height: 12px; }
+.pv .halo { width: 190px; height: 190px; } .pv .halo img { width: 120px; height: auto; max-height: 130px; object-fit: contain; filter: drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+.pv .pl2 { letter-spacing: .2em; font-size: 11px; color: var(--muted); margin: 14px 0 8px; }
+.picks { display: flex; gap: 10px; justify-content: center; margin-bottom: 4px; } .pick { width: 74px; height: 66px; border-radius: 16px; border: 1px solid var(--line); background: rgba(0,0,0,.18); padding: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; } .pick img { max-width: 100%; max-height: 100%; } .pick.on { border-color: var(--gold); box-shadow: 0 0 0 2px rgba(232,182,110,.35); }
+.pin { display: block; width: 100%; font: inherit; font-size: 16px; color: var(--fg); background: var(--ctl); border: 1px solid var(--line); border-radius: 12px; padding: 11px; margin-bottom: 10px; text-align: center; }
+nav button { font-size: 11.5px; padding: 6px 4px 5px; } nav svg { width: 22px; height: 22px; }
+.banner { margin-top: 0; }
+:root[data-theme="light"] .titulo { filter: brightness(.55) saturate(1.3); }
 </style>
 </head>
 <body>
@@ -392,23 +429,23 @@ var ICON_CHEV = '<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
 var ICON_BACK = '<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>';
 var PZ_SNEAKER = '<svg viewBox="0 0 120 72" fill="none" stroke="#EE7F89" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path fill="rgba(238,127,137,.10)" d="M9 54 C9 45 11 41 19 39 L40 31 C46 37 53 41 63 43 L89 47 C103 49 112 53 112 59 L112 61 C112 63 110 65 108 65 L15 65 C11 65 9 61 9 54Z"/><path d="M9 59 H112"/><path d="M45 35 L52 29 M53 39 L60 33 M61 41 L68 36"/><path d="M19 39 C22 30 27 24 34 24 L38 31"/></svg>';
 var PZ_TOOLS = '<svg viewBox="0 0 120 84" stroke-linejoin="round" stroke-linecap="round"><path d="M40 24 V16 Q40 9 47 9 H73 Q80 9 80 16 V24" fill="none" stroke="url(#gbr)" stroke-width="5"/><rect x="10" y="24" width="100" height="54" rx="8" fill="url(#gbr)" stroke="#6b3d10" stroke-width="1.4"/><path d="M10 44 H110" stroke="#6b3d10" stroke-width="1.6"/><g fill="#7a4510" stroke="#FFE9B8" stroke-width="1"><rect x="26" y="36" width="12" height="14" rx="2"/><rect x="54" y="36" width="12" height="14" rx="2"/><rect x="82" y="36" width="12" height="14" rx="2"/></g><path d="M30 66 Q60 74 90 66" fill="none" stroke="#6b3d10" stroke-width="1.6"/></svg>';
-var HEART_P = 'M100 176 C20 118 26 36 76 32 C90 31 98 40 100 48 C102 40 110 31 124 32 C174 36 180 118 100 176Z';
-var WAVE = 'M-100 0 q25 -7 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V240 H-100Z';
-function heartSvg() {
-  function half(id, clip, grad) { return '<g clip-path="url(#' + clip + ')"><g class="liq" id="' + id + '" style="transform:translateY(' + liqY(HLV[id]) + 'px)"><g class="wv2"><path d="' + WAVE + '" fill="url(#' + grad + ')" opacity=".5" transform="translate(-30,-3)"/></g><g class="wv"><path d="' + WAVE + '" fill="url(#' + grad + ')"/></g></g></g>'; }
-  return '<svg class="heart" viewBox="22 28 196 184" role="img" aria-label="Corazón que se llena con los gestos de Russ y Braian"><defs>' +
-    '<linearGradient id="lqR" gradientUnits="userSpaceOnUse" x1="0" y1="36" x2="0" y2="180"><stop offset="0" stop-color="#E8625C"/><stop offset=".5" stop-color="#C9404A"/><stop offset="1" stop-color="#8A2230"/></linearGradient>' +
-    '<linearGradient id="lqG" gradientUnits="userSpaceOnUse" x1="0" y1="36" x2="0" y2="180"><stop offset="0" stop-color="#F3B95F"/><stop offset=".5" stop-color="#D9974D"/><stop offset="1" stop-color="#9A5A1A"/></linearGradient>' +
-    '<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1D6" stop-opacity=".95"/><stop offset=".5" stop-color="#C9A06A" stop-opacity=".7"/><stop offset="1" stop-color="#FFE4A0" stop-opacity=".95"/></linearGradient>' +
-    '<radialGradient id="gl2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8B66E" stop-opacity=".35"/><stop offset="1" stop-color="#E8B66E" stop-opacity="0"/></radialGradient>' +
-    '<clipPath id="hcl"><path d="' + HEART_P + '"/></clipPath><clipPath id="hhL"><rect x="0" y="0" width="97" height="240"/></clipPath><clipPath id="hhR"><rect x="103" y="0" width="100" height="240"/></clipPath></defs>' +
-        '<g transform="translate(20,10)"><path d="' + HEART_P + '" fill="rgba(20,10,8,.55)"/>' + '<g clip-path="url(#hcl)">' + half("liqA", "hhL", "lqR") + half("liqB", "hhR", "lqG") + '</g>' +
-    '<path d="M100 48 L100 176" stroke="#120a07" stroke-width="3"/><path d="' + HEART_P + '" fill="none" stroke="url(#rim)" stroke-width="3.4"/><path d="M36 74 Q34 52 60 44" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/><path d="M164 70 Q166 52 142 44" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2.4" stroke-linecap="round"/></g>' +
-    '<ellipse cx="120" cy="196" rx="86" ry="5" fill="none" stroke="#E8B66E" stroke-opacity=".6" stroke-width="1.4"/><ellipse cx="120" cy="196" rx="52" ry="2.6" fill="#E8B66E" opacity=".35"/></svg>';
+var WAVE = 'M-100 0 q25 -2.4 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V120 H-100Z';
+var cfg = [], HLV = { A: 0, B: 0 };
+var PRIZE_DEF = { russ: "Zapatillas para entrenar", braian: "Juego de herramientas tubo completo" };
+var PRIZE_ICONS = [["regalo", "Regalo"], ["entrada", "Entrada"], ["monedas", "Monedas"]];
+function prizeInfo(w) { var d = cfg.filter(function (x) { return x.id === "cfg_prize_" + w; })[0] || {}; return { icon: d.icon || "regalo", name: d.name || PRIZE_DEF[w] }; }
+function pzImg(icon) { return '<img src="p-' + icon + '.png" alt="" draggable="false">'; }
+function liqY(l) { return (90 - 82 * l).toFixed(1); }
+function lvl(sc, cap) { return 0.04 + 0.92 * Math.min(1, sc / cap); }
+function liquidLayer(id, mask, g1, g2, g3) {
+  return '<div class="lq" style="-webkit-mask-image:url(' + mask + ');mask-image:url(' + mask + ')"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><defs><linearGradient id="g' + id + '" gradientUnits="userSpaceOnUse" x1="0" y1="8" x2="0" y2="92"><stop offset="0" stop-color="' + g1 + '"/><stop offset=".5" stop-color="' + g2 + '"/><stop offset="1" stop-color="' + g3 + '"/></linearGradient></defs>' +
+    '<g class="liq" id="liq' + id + '" style="transform:translateY(' + liqY(HLV[id]) + 'px)"><g class="wv2"><path d="' + WAVE + '" fill="url(#g' + id + ')" opacity=".55" transform="translate(-20,-1.4)"/></g><g class="wv"><path d="' + WAVE + '" fill="url(#g' + id + ')"/></g></g></svg></div>';
 }
-var HLV = { liqA: 0, liqB: 0 };
-function liqY(l) { return (172 - 138 * l).toFixed(1); }
-function lvl(sc, cap) { return 0.06 + 0.84 * Math.min(1, sc / cap); }
+function heartSvg() {
+  return '<div class="hw"><img class="hbase" src="base.png" alt="" draggable="false"><div class="hh">' +
+    liquidLayer("A", "heart-maskL.png", "#F2706A", "#D9464E", "#8E2431") + liquidLayer("B", "heart-maskR.png", "#F6C066", "#DD9A4A", "#A9631C") +
+    '<img class="hglass" src="heart.png" alt="Corazón que se llena con los gestos de Russ y Braian" draggable="false"></div></div>';
+}
 function tilt() {
   var s = scores(), cap = Math.max(300, Math.max(s.russ, s.braian) * 1.2);
   var L = lvl(s.russ, cap), R = lvl(s.braian, cap);
@@ -416,7 +453,7 @@ function tilt() {
     var a = document.getElementById("liqA"), b = document.getElementById("liqB");
     if (a) a.style.transform = "translateY(" + liqY(L) + "px)";
     if (b) b.style.transform = "translateY(" + liqY(R) + "px)";
-    HLV.liqA = L; HLV.liqB = R;
+    HLV.A = L; HLV.B = R;
   });
   var tot = s.russ + s.braian, p = tot ? Math.round(s.russ / tot * 1000) / 10 : 50;
   var fr = document.getElementById("fr"), fb = document.getElementById("fb"), ind = document.getElementById("ind");
@@ -426,36 +463,39 @@ function header(big) {
   var ph = phase(), t = todayStr(), total = dnum(END) - dnum(START) + 1, n = dnum(t) - dnum(START) + 1;
   var sub = ph === "live" ? "DÍA " + n + " DE " + total : (ph === "ended" ? "TERMINÓ" : "EMPIEZA EL " + dlabel(START).toUpperCase());
   var tools = '<div class="tools"><button class="theme-btn" data-act="sound" type="button" aria-label="' + (soundOn ? "Silenciar sonidos" : "Activar sonidos") + '">' + (soundOn ? ICON_SPK : ICON_MUTE) + '</button><button class="theme-btn" data-act="theme" type="button" aria-label="' + (theme === "light" ? "Cambiar a modo noche" : "Cambiar a modo día") + '">' + (theme === "light" ? ICON_MOON : ICON_SUN) + '</button><button class="theme-btn" data-act="who" type="button" aria-label="Salir de la cuenta de ' + esc(NAMES[me]) + '">' + ICON_USER + '</button></div>';
-  var season = '<div class="season"><span class="vl"></span><div><small>TEMPORADA 1</small><b>' + esc(dlabel(START).toUpperCase()) + " · " + esc(dlabel(END).toUpperCase()) + '</b><em>' + sub + " · " + esc(NAMES[me].toUpperCase()) + '</em></div><span class="vl"></span></div>';
-  if (big) return '<div class="top big">' + tools + '</div><div class="hero">' + heartSvg() + '<div class="wm"><div class="wm1"><i></i><span>A TU</span><i></i></div><div class="wm2">SERVICIO</div></div></div>' + season;
-  return '<div class="top mini"><div class="wm mini"><div class="wm1"><span>A TU</span></div><div class="wm2">SERVICIO</div></div>' + tools + '</div>' + season;
+  var season = '<div class="season1"><b>TEMPORADA 1 · ' + esc(dlabel(START).toUpperCase()) + " · " + esc(dlabel(END).toUpperCase()) + '</b><em>' + sub + " · " + esc(NAMES[me].toUpperCase()) + '</em></div>';
+  if (big) return '<div class="top big">' + tools + '</div><div class="hero">' + heartSvg() + '<img class="titulo" src="titulo.png" alt="A tu servicio"></div>' + season;
+  return '<div class="top mini"><img class="titulo sm" src="titulo.png" alt="A tu servicio">' + tools + '</div>' + season;
 }
 function prizeCard(w) {
-  var r = w === "russ";
-  return '<button class="pz ' + (r ? "r" : "b") + '" data-act="prize" data-w="' + w + '" type="button"><span class="crown">' + ICON_CROWN + '</span><div class="ic">' + (r ? PZ_SNEAKER : PZ_TOOLS) + '</div><small>PREMIO DE ' + (r ? "RUSS" : "BRAIAN") + '</small><b>' + (r ? "Zapatillas para entrenar" : "Juego de herramientas") + '</b><span class="go">' + ICON_CHEV + "</span></button>";
+  var r = w === "russ", pi = prizeInfo(w);
+  return '<button class="pz ' + (r ? "r" : "b") + '" data-act="prize" data-w="' + w + '" type="button"><span class="crown">' + ICON_CROWN + '</span><div class="ic">' + pzImg(pi.icon) + '</div><small>PREMIO DE ' + (r ? "RUSS" : "BRAIAN") + '</small><b>' + esc(pi.name) + '</b></button>';
 }
 function viewPrize() {
-  var r = prizeOf === "russ";
-  var row = function (k, v) { return '<div class="ir"><span>' + k + "</span><b>" + v + "</b></div>"; };
-  return '<div class="pv ' + (r ? "r" : "b") + '"><button class="theme-btn back" data-act="home" type="button" aria-label="Volver">' + ICON_BACK + '</button><div class="crownb">' + ICON_CROWN + '</div><p class="pl">PREMIO DE ' + (r ? "RUSS" : "BRAIAN") + '</p><div class="halo">' + (r ? PZ_SNEAKER : PZ_TOOLS) + '</div><h2 class="pn">' + (r ? "Zapatillas<br>para entrenar" : "Juego de herramientas<br>tubo completo") + '</h2><div class="rule"></div><p class="pd">' + (r ? "Zapatillas que siempre quise para mis entrenamientos. Tu esfuerzo puede hacerlo realidad." : "El juego de herramientas tubo completo que Braian quiere. Tu esfuerzo puede hacerlo realidad.") + '</p><div class="infos">' + row("Categoría", r ? "Deporte" : "Herramientas") + row("Lo regala", r ? "Braian" : "Russ") + row("Valor emocional", "Alto") + row("Objetivo", "Motivación y constancia") + '</div><button class="btn" data-act="home" type="button">Volver</button></div>';
+  var r = prizeOf === "russ", pi = prizeInfo(prizeOf);
+  var picks = PRIZE_ICONS.map(function (x) { return '<button class="pick' + (pi.icon === x[0] ? " on" : "") + '" data-act="pzicon" data-w="' + prizeOf + '" data-i="' + x[0] + '" type="button" aria-label="' + x[1] + '">' + pzImg(x[0]) + '</button>'; }).join("");
+  return '<div class="pv ' + (r ? "r" : "b") + '"><button class="theme-btn back" data-act="home" type="button" aria-label="Volver">' + ICON_BACK + '</button><p class="pl">PREMIO DE ' + (r ? "RUSS" : "BRAIAN") + '</p><div class="halo">' + pzImg(pi.icon) + '</div><h2 class="pn">' + esc(pi.name) + '</h2><div class="rule"></div><p class="pd">' + (r ? "Lo regala Braian si Russ gana." : "Lo regala Russ si Braian gana.") + ' Tu esfuerzo puede hacerlo realidad.</p><p class="pl2">ELIGE EL ICONO</p><div class="picks">' + picks + '</div><p class="pl2">NOMBRE DEL PREMIO</p><input class="pin" id="pzname" type="text" maxlength="60" value="' + esc(pi.name) + '"><button class="btn" data-act="pzsave" data-w="' + prizeOf + '" type="button">Guardar nombre</button><button class="btn ghost" data-act="home" type="button" style="margin-top:8px">Volver</button></div>';
 }
-
+async function savePrize(w, patch) {
+  var cur = prizeInfo(w), d = { icon: patch.icon || cur.icon, name: (patch.name || cur.name) };
+  try { await db.collection("tasks").doc("cfg_prize_" + w).set(d); toast("Guardado"); } catch (e) { toast("No se pudo guardar"); }
+}
 function viewHome() {
-  var s = scores(), ph = phase(), out = header(true);
-  if (!canWrite) out += '<div class="banner red">Solo puedes mirar. Pide a quien compartió la página que te dé permiso para editar.</div>';
-  if (ph === "practice") out += '<div class="banner">Modo práctica hasta el ' + dlabel(START) + '. Lo que registren ahora sirve para probar y no cuenta en el duelo.</div>';
+  var s = scores(), ph = phase(), out = header(true), ban = "";
+  if (!canWrite) ban += '<div class="banner red">Solo puedes mirar. Pide a quien compartió la página que te dé permiso para editar.</div>';
+  if (ph === "practice") ban += '<div class="banner">Modo práctica hasta el ' + dlabel(START) + '. Lo que registren ahora sirve para probar y no cuenta en el duelo.</div>';
   if (ph === "ended") {
     var w = s.russ === s.braian ? null : (s.russ > s.braian ? "russ" : "braian");
-    out += '<div class="card gold"><h3>Terminó el duelo</h3><p>' + (w ? esc(NAMES[w]) + " ganó con " + s[w] + " millas. " + esc(NAMES[other(w)]) + (w === "russ" ? " regala las zapatillas para entrenar." : " regala el juego de herramientas tubo completo.") : "Quedaron empatados. Definan juntos cómo cerrar.") + "</p></div>";
+    ban += '<div class="card gold"><h3>Terminó el duelo</h3><p>' + (w ? esc(NAMES[w]) + " ganó con " + s[w] + " gestos. " + esc(NAMES[other(w)]) + " regala: " + esc(prizeInfo(w).name) + "." : "Quedaron empatados. Definan juntos cómo cerrar.") + "</p></div>";
   }
   if (ph === "live" && hourNow() >= 21) {
     var did = logs.some(function (l) { return l.by === me && l.date === todayStr(); });
-    if (!did) out += '<div class="banner">Aún no registraste tu día. <button data-act="nav" data-v="day" type="button">Completar ahora</button></div>';
+    if (!did) ban += '<div class="banner">Aún no registraste tu día. <button data-act="nav" data-v="day" type="button">Completar ahora</button></div>';
   }
   out += '<div class="duel"><div class="scs"><div class="sc r"><span>RUSS</span><b>' + s.russ + '</b><small>GESTOS</small></div><i class="vsep"></i><div class="sc b"><span>BRAIAN</span><b>' + s.braian + '</b><small>GESTOS</small></div></div>' +
     '<div class="bar2"><div class="fill2 fr" id="fr"></div><div class="fill2 fb" id="fb"></div><div class="mk" id="ind"></div></div>' +
-    '<p class="lead">' + (s.russ === s.braian ? "Van empatados" : (s.russ > s.braian ? "Russ va ganando por " + (s.russ - s.braian) + " millas" : "Braian va ganando por " + (s.braian - s.russ) + " millas")) + "</p></div>" +
-    '<div class="sect"><i></i><span>PREMIOS</span><i></i></div><div class="pzs">' + prizeCard("russ") + prizeCard("braian") + "</div>";
+    '<p class="lead">' + (s.russ === s.braian ? "Van empatados" : (s.russ > s.braian ? "Russ va ganando por " + (s.russ - s.braian) + " gestos" : "Braian va ganando por " + (s.braian - s.russ) + " gestos")) + "</p></div>" +
+    '<div class="sect"><i></i><span>PREMIOS</span><i></i></div><div class="pzs">' + prizeCard("russ") + prizeCard("braian") + "</div>" + ban;
   var pend = pendingForMe();
   if (pend.length) {
     var sum = pend.reduce(function (a, l) { return a + (l.pts || 0); }, 0);
@@ -648,6 +688,8 @@ document.addEventListener("click", async function (ev) {
   else if (act === "login" || act === "signup") doAuth(act);
   else if (act === "prize") { prizeOf = el.getAttribute("data-w"); view = "prize"; render(); window.scrollTo(0, 0); }
   else if (act === "home") { view = "home"; render(); window.scrollTo(0, 0); }
+  else if (act === "pzicon") { await savePrize(el.getAttribute("data-w"), { icon: el.getAttribute("data-i") }); }
+  else if (act === "pzsave") { var pn = document.getElementById("pzname"); if (pn && pn.value.trim()) await savePrize(el.getAttribute("data-w"), { name: pn.value.trim() }); }
   else if (act === "theme") { theme = theme === "light" ? "dark" : "light"; applyTheme(); render(); }
   else if (act === "pick") { await saveWho(el.getAttribute("data-w")); view = "home"; render(); }
   else if (act === "tog") { if (el.disabled) return; sel[id] = !sel[id]; if (!sel[id] && photos[id]) { try { URL.revokeObjectURL(photos[id].url); } catch (e) {} delete photos[id]; } render(); }
@@ -738,7 +780,7 @@ async function start() {
   } };
   canWrite = true;
   function snap(name, fn) { db.collection(name).onSnapshot(function (q) { fn(q.docs.map(function (d) { var o = Object.assign({}, d.data() || {}); o.id = d.id; return o; })); schedule(); }, function () {}); }
-  snap("tasks", function (a) { tasks = a.sort(function (x, y) { return (x.order || 0) - (y.order || 0); }); });
+  snap("tasks", function (a) { cfg = a.filter(function (x) { return x.id.indexOf("cfg_") === 0; }); a = a.filter(function (x) { return x.id.indexOf("cfg_") !== 0; }); tasks = a.sort(function (x, y) { return (x.order || 0) - (y.order || 0); }); });
   var logsLoaded = false;
   snap("logs", function (a) {
     var before = logsLoaded ? scores() : null;
