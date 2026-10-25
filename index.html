@@ -13,7 +13,7 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap">
 <style>
 /* Layout: una columna con cuatro vistas (Inicio, Mi día, Confirmar, Historial) y barra de navegación inferior fija. */
 :root {
@@ -232,6 +232,51 @@ body { background: radial-gradient(130% 55% at 50% -5%, #2b1b0d 0%, #0b0706 46%,
 .btn.ghost { background: none; color: var(--rose); border-color: var(--line); }
 nav { border-radius: 22px 22px 0 0; border-top: 1px solid var(--line); }
 .card.gold, .row.t100 { --gold: #E8B66E; }
+
+/* ===== rediseño corazón ===== */
+:root { --bg:#24170f; --surface:#2b1b13; --surface2:#34221a; --line:#5b4129; --navbg:#1c120d; --ctl:#1c120d; --muted:#c2ac90; --serif:"Cormorant Garamond",Georgia,serif; --cinzel:"Cinzel","Cormorant Garamond",Georgia,serif; }
+body { background: radial-gradient(110% 38% at 50% 14%, rgba(232,182,110,.16), transparent 70%), linear-gradient(180deg,#2e1d14 0%,#26180f 45%,#1f130d 100%) fixed; }
+:root[data-theme="light"] { --bg:#F6EEE6; --surface:#FFFAF4; --surface2:#F1E4D8; --line:#d9bfa4; --navbg:#FFFAF4; --ctl:#fff; --muted:#7d6552; }
+:root[data-theme="light"] body { background: radial-gradient(120% 60% at 50% -6%, #FFF8F0 0%, #F0DED2 55%, #E3C4B8 100%) fixed; }
+.top.big { display: flex; justify-content: flex-end; margin: 0; } .top.big .tools { padding-top: 6px; }
+.top.mini { display: flex; justify-content: space-between; align-items: center; } .top.mini .tools { padding: 0; }
+.theme-btn { width: 44px; height: 44px; background: rgba(20,12,8,.35); border: 1px solid rgba(232,182,110,.5); color: var(--gold); }
+.hero { text-align: center; margin-top: -4px; }
+.heart { display: block; width: 88%; max-width: 340px; margin: 0 auto; filter: drop-shadow(0 10px 22px rgba(0,0,0,.45)); animation: hfloat 6s ease-in-out infinite; }
+@keyframes hfloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.liq { transition: transform 1.6s cubic-bezier(.3,.7,.2,1); }
+.wv { animation: wslide 4.5s linear infinite; } .wv2 { animation: wslide2 7s linear infinite; }
+@keyframes wslide { from { transform: translateX(0); } to { transform: translateX(-100px); } }
+@keyframes wslide2 { from { transform: translateX(-100px); } to { transform: translateX(0); } }
+.wm { margin-top: 2px; } .wm1 { display: flex; align-items: center; justify-content: center; gap: 14px; font-family: var(--cinzel); font-size: 22px; letter-spacing: .5em; text-indent: .5em; color: #EBD2A4; }
+.wm1 i { width: 64px; height: 1px; background: linear-gradient(90deg, transparent, #E8B66E); } .wm1 i:last-child { background: linear-gradient(270deg, transparent, #E8B66E); }
+.wm2 { font-family: var(--cinzel); font-weight: 500; font-size: 46px; line-height: 1.05; letter-spacing: .14em; text-indent: .14em; background: linear-gradient(180deg,#FFEBC0 0%,#E3B877 55%,#B98343 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.wm.mini { margin: 0; text-align: left; } .wm.mini .wm1 { justify-content: flex-start; font-size: 11px; letter-spacing: .4em; text-indent: 0; } .wm.mini .wm2 { font-size: 24px; text-indent: 0; }
+.season { margin: 14px 0 16px; } .season b { font-family: var(--body); letter-spacing: .18em; }
+.duel { border: 1px solid rgba(224,120,100,.5); border-radius: 22px; padding: 16px 18px 14px; margin-bottom: 20px; background: linear-gradient(120deg, rgba(120,32,40,.38), rgba(70,42,20,.40) 55%, rgba(70,48,20,.45)); box-shadow: 0 14px 30px rgba(0,0,0,.3); }
+.scs { display: grid; grid-template-columns: 1fr 1px 1fr; align-items: center; }
+.scs .vsep { height: 70px; background: linear-gradient(transparent, rgba(232,182,110,.55), transparent); }
+.scs .sc { text-align: left; } .scs .sc.b { text-align: right; }
+.scs .sc span { font-size: 15px; font-weight: 500; letter-spacing: .1em; }
+.scs .sc b { font-family: var(--body); font-size: 52px; font-weight: 700; line-height: 1.05; }
+.scs .sc.r b { color: #F4D2C8; } .scs .sc.b b { color: #FFE9B8; }
+.scs .sc small { font-size: 13px; letter-spacing: .12em; color: #d8c3a6; }
+.bar2 { position: relative; display: flex; height: 18px; border-radius: 10px; margin: 14px 0 4px; overflow: visible; background: #2a1a12; }
+.fill2 { height: 100%; transition: width .8s ease; } .fill2.fr { background: linear-gradient(180deg,#f27a74,#c9484c); border-radius: 10px 0 0 10px; } .fill2.fb { background: linear-gradient(180deg,#f6c26e,#d9974d); border-radius: 0 10px 10px 0; }
+.mk { position: absolute; top: -3px; bottom: -3px; width: 3px; margin-left: -1.5px; border-radius: 2px; background: #2a1209; box-shadow: 0 0 8px 2px rgba(255,120,80,.65); transition: left .8s ease; }
+.lead { margin: 12px 0 0; font-size: 13px; }
+.sect { display: flex; align-items: center; gap: 14px; margin: 4px 0 14px; } .sect i { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,182,110,.6)); } .sect i:last-child { background: linear-gradient(270deg, transparent, rgba(232,182,110,.6)); }
+.sect span { font-size: 17px; letter-spacing: .26em; color: #EBD7B6; }
+.pzs { gap: 12px; }
+.pz { border-radius: 22px; padding: 16px 8px 14px; }
+.pz.r { border-color: rgba(224,112,124,.65); background: linear-gradient(160deg, rgba(150,50,50,.55), rgba(60,30,24,.65)); }
+.pz.b { border-color: rgba(232,182,110,.7); background: linear-gradient(160deg, rgba(150,100,40,.5), rgba(58,38,20,.65)); }
+.pz .ic { width: 96px; height: 66px; margin: 14px auto 10px; }
+.pz small { font-size: 12px; letter-spacing: .14em; }
+.pz b { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.15; margin: 8px 0 14px; color: #F7ECDC; }
+.pz .crown { width: 30px; height: 30px; background: rgba(0,0,0,.2); } .pz .go { width: 40px; height: 40px; background: rgba(0,0,0,.22); }
+.pv .pn { font-family: var(--serif); font-weight: 600; }
+nav { background: #1c120d; border-top: 1px solid rgba(232,182,110,.25); } nav button { font-size: 13px; } nav svg { width: 26px; height: 26px; }
 </style>
 </head>
 <body>
@@ -341,53 +386,49 @@ function applyTheme() {
   try { localStorage.setItem("millas-theme", theme); } catch (e) {}
 }
 applyTheme();
-var SCALE = '<svg class="scale" viewBox="0 0 340 330" role="img" aria-label="Balanza con las zapatillas de Russ y las herramientas de Braian"><defs>' +
-'<linearGradient id="br" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE4A0"/><stop offset=".5" stop-color="#D9974D"/><stop offset="1" stop-color="#7A4510"/></linearGradient>' +
-'<linearGradient id="ro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE0D2"/><stop offset=".5" stop-color="#D2705A"/><stop offset="1" stop-color="#6A1A10"/></linearGradient>' +
-'<radialGradient id="gR"><stop offset="0" stop-color="#FF4A38" stop-opacity=".6"/><stop offset="1" stop-color="#FF4A38" stop-opacity="0"/></radialGradient>' +
-'<radialGradient id="gG"><stop offset="0" stop-color="#F5C06A" stop-opacity=".65"/><stop offset="1" stop-color="#F5C06A" stop-opacity="0"/></radialGradient>' +
-'<radialGradient id="bgm" cx=".5" cy=".4" r=".7"><stop offset="0" style="stop-color:var(--med1)"/><stop offset="1" style="stop-color:var(--med2)"/></radialGradient></defs>' +
-'<circle cx="170" cy="165" r="152" fill="url(#bgm)" stroke="url(#br)" stroke-width="5"/><circle cx="170" cy="165" r="140" fill="none" stroke="#D9974D" stroke-width=".8" stroke-dasharray="2 5"/>' +
-'<path d="M112 286 L228 286 L218 266 L122 266 Z" fill="url(#br)" stroke="#7A4510"/><ellipse cx="170" cy="266" rx="40" ry="5" fill="#F0C070"/>' +
-'<rect x="164" y="92" width="12" height="174" fill="url(#br)" stroke="#7A4510"/><circle cx="170" cy="80" r="8" fill="url(#br)" stroke="#7A4510"/>' +
-'<g id="beam"><rect x="68" y="88.5" width="204" height="7" rx="3.5" fill="url(#br)" stroke="#7A4510"/><circle cx="68" cy="92" r="5" fill="#F0C070" stroke="#7A4510"/><circle cx="272" cy="92" r="5" fill="#F0C070" stroke="#7A4510"/></g>' +
-'<circle cx="170" cy="92" r="9" fill="url(#br)" stroke="#7A4510"/>' +
-'<path id="cl" d="" stroke="#D9974D" stroke-width="1.3" fill="none"/><path id="cr" d="" stroke="#D9974D" stroke-width="1.3" fill="none"/>' +
-'<g id="pl"><ellipse id="gl" cx="0" cy="-20" rx="62" ry="44" fill="url(#gR)" opacity="0"/><g transform="translate(0,-22)"><g fill="url(#ro)" stroke="#2A0F08" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"><path d="M-28 12 L-28 -2 Q-28 -8 -22 -9 L-10 -12 Q-4 -6 4 -4 L14 -3 Q24 -2 28 6 L28 12 Z"/><rect x="-29" y="12" width="58" height="5" rx="2"/><path fill="none" d="M-4 -7 L2 -11 M2 -4 L8 -8 M8 -3 L14 -6"/></g></g><path d="M-42 0 Q0 34 42 0 Z" fill="url(#br)"/><ellipse cx="0" cy="0" rx="42" ry="5" fill="#F0C070" stroke="#7A4510" stroke-width="1"/></g>' +
-'<g id="pr"><ellipse id="gr" cx="0" cy="-20" rx="62" ry="44" fill="url(#gG)" opacity="0"/><g transform="translate(0,-22)"><g fill="url(#br)" stroke="#2A1600" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"><rect x="-28" y="-14" width="56" height="32" rx="4"/><path fill="none" d="M-10 -14 Q-10 -24 0 -24 Q10 -24 10 -14"/><circle cx="-18" cy="-2" r="5" fill="none"/><circle cx="-6" cy="-2" r="5" fill="none"/><circle cx="6" cy="-2" r="5" fill="none"/><circle cx="18" cy="-2" r="5" fill="none"/><path fill="none" d="M-22 10 L10 10"/><circle cx="18" cy="10" r="4" fill="none"/></g></g><path d="M-42 0 Q0 34 42 0 Z" fill="url(#br)"/><ellipse cx="0" cy="0" rx="42" ry="5" fill="#F0C070" stroke="#7A4510" stroke-width="1"/></g></svg>';
-
-function place(side, ex, ey) {
-  var H = 95, HW = 40, pcx = ex, pcy = ey + H;
-  document.getElementById("p" + side).setAttribute("transform", "translate(" + pcx.toFixed(2) + "," + pcy.toFixed(2) + ")");
-  document.getElementById("c" + side).setAttribute("d", "M" + ex.toFixed(2) + " " + ey.toFixed(2) + " L" + (pcx - HW).toFixed(2) + " " + pcy.toFixed(2) + " M" + ex.toFixed(2) + " " + ey.toFixed(2) + " L" + (pcx + HW).toFixed(2) + " " + pcy.toFixed(2));
-}
-function tilt(diff) {
-  if (!document.getElementById("beam")) return;
-  var PX = 170, PY = 92, L = 100;
-  var t = -Math.max(-1, Math.min(1, diff / MAXD)) * 13, r = t * Math.PI / 180, pct = Math.abs(diff) / MAXD * 45;
-  document.getElementById("beam").setAttribute("transform", "rotate(" + t.toFixed(2) + " " + PX + " " + PY + ")");
-  place("l", PX - L * Math.cos(r), PY - L * Math.sin(r));
-  place("r", PX + L * Math.cos(r), PY + L * Math.sin(r));
-  document.getElementById("gl").setAttribute("opacity", diff > 0 ? "1" : (diff === 0 ? ".5" : ".08"));
-  document.getElementById("gr").setAttribute("opacity", diff < 0 ? "1" : (diff === 0 ? ".5" : ".08"));
-  var fr = document.getElementById("fr"), fb = document.getElementById("fb");
-  if (diff > 0) { fr.style.left = (50 - pct) + "%"; fr.style.width = pct + "%"; fb.style.left = "50%"; fb.style.width = "0%"; }
-  else if (diff < 0) { fb.style.left = "50%"; fb.style.width = pct + "%"; fr.style.left = "50%"; fr.style.width = "0%"; }
-  else { fr.style.width = "0%"; fb.style.width = "0%"; }
-  document.getElementById("ind").style.left = (50 - diff / MAXD * 45) + "%";
-}
-
 var ICON_USER = '<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>';
 var ICON_CROWN = '<svg viewBox="0 0 24 24"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 10H5z"/></svg>';
 var ICON_CHEV = '<svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>';
 var ICON_BACK = '<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>';
-var PZ_SNEAKER = '<svg viewBox="-34 -18 68 38"><g fill="url(#gro)" stroke="#2A0F08" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"><path d="M-28 12 L-28 -2 Q-28 -8 -22 -9 L-10 -12 Q-4 -6 4 -4 L14 -3 Q24 -2 28 6 L28 12 Z"/><rect x="-29" y="12" width="58" height="5" rx="2"/><path fill="none" d="M-4 -7 L2 -11 M2 -4 L8 -8 M8 -3 L14 -6"/></g></svg>';
-var PZ_TOOLS = '<svg viewBox="-34 -30 68 52"><g fill="url(#gbr)" stroke="#2A1600" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"><rect x="-28" y="-14" width="56" height="32" rx="4"/><path fill="none" d="M-10 -14 Q-10 -24 0 -24 Q10 -24 10 -14"/><circle cx="-18" cy="-2" r="5" fill="none"/><circle cx="-6" cy="-2" r="5" fill="none"/><circle cx="6" cy="-2" r="5" fill="none"/><circle cx="18" cy="-2" r="5" fill="none"/><path fill="none" d="M-22 10 L10 10"/></g></svg>';
-var prizeOf = null;
-function header() {
+var PZ_SNEAKER = '<svg viewBox="0 0 120 72" fill="none" stroke="#EE7F89" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><path fill="rgba(238,127,137,.10)" d="M9 54 C9 45 11 41 19 39 L40 31 C46 37 53 41 63 43 L89 47 C103 49 112 53 112 59 L112 61 C112 63 110 65 108 65 L15 65 C11 65 9 61 9 54Z"/><path d="M9 59 H112"/><path d="M45 35 L52 29 M53 39 L60 33 M61 41 L68 36"/><path d="M19 39 C22 30 27 24 34 24 L38 31"/></svg>';
+var PZ_TOOLS = '<svg viewBox="0 0 120 84" stroke-linejoin="round" stroke-linecap="round"><path d="M40 24 V16 Q40 9 47 9 H73 Q80 9 80 16 V24" fill="none" stroke="url(#gbr)" stroke-width="5"/><rect x="10" y="24" width="100" height="54" rx="8" fill="url(#gbr)" stroke="#6b3d10" stroke-width="1.4"/><path d="M10 44 H110" stroke="#6b3d10" stroke-width="1.6"/><g fill="#7a4510" stroke="#FFE9B8" stroke-width="1"><rect x="26" y="36" width="12" height="14" rx="2"/><rect x="54" y="36" width="12" height="14" rx="2"/><rect x="82" y="36" width="12" height="14" rx="2"/></g><path d="M30 66 Q60 74 90 66" fill="none" stroke="#6b3d10" stroke-width="1.6"/></svg>';
+var HEART_P = 'M100 176 C20 118 26 36 76 32 C90 31 98 40 100 48 C102 40 110 31 124 32 C174 36 180 118 100 176Z';
+var WAVE = 'M-100 0 q25 -7 50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 t50 0 V240 H-100Z';
+function heartSvg() {
+  function half(id, clip, grad) { return '<g clip-path="url(#' + clip + ')"><g class="liq" id="' + id + '" style="transform:translateY(' + liqY(HLV[id]) + 'px)"><g class="wv2"><path d="' + WAVE + '" fill="url(#' + grad + ')" opacity=".5" transform="translate(-30,-3)"/></g><g class="wv"><path d="' + WAVE + '" fill="url(#' + grad + ')"/></g></g></g>'; }
+  return '<svg class="heart" viewBox="22 28 196 184" role="img" aria-label="Corazón que se llena con los gestos de Russ y Braian"><defs>' +
+    '<linearGradient id="lqR" gradientUnits="userSpaceOnUse" x1="0" y1="36" x2="0" y2="180"><stop offset="0" stop-color="#E8625C"/><stop offset=".5" stop-color="#C9404A"/><stop offset="1" stop-color="#8A2230"/></linearGradient>' +
+    '<linearGradient id="lqG" gradientUnits="userSpaceOnUse" x1="0" y1="36" x2="0" y2="180"><stop offset="0" stop-color="#F3B95F"/><stop offset=".5" stop-color="#D9974D"/><stop offset="1" stop-color="#9A5A1A"/></linearGradient>' +
+    '<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1D6" stop-opacity=".95"/><stop offset=".5" stop-color="#C9A06A" stop-opacity=".7"/><stop offset="1" stop-color="#FFE4A0" stop-opacity=".95"/></linearGradient>' +
+    '<radialGradient id="gl2" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E8B66E" stop-opacity=".35"/><stop offset="1" stop-color="#E8B66E" stop-opacity="0"/></radialGradient>' +
+    '<clipPath id="hcl"><path d="' + HEART_P + '"/></clipPath><clipPath id="hhL"><rect x="0" y="0" width="97" height="240"/></clipPath><clipPath id="hhR"><rect x="103" y="0" width="100" height="240"/></clipPath></defs>' +
+        '<g transform="translate(20,10)"><path d="' + HEART_P + '" fill="rgba(20,10,8,.55)"/>' + '<g clip-path="url(#hcl)">' + half("liqA", "hhL", "lqR") + half("liqB", "hhR", "lqG") + '</g>' +
+    '<path d="M100 48 L100 176" stroke="#120a07" stroke-width="3"/><path d="' + HEART_P + '" fill="none" stroke="url(#rim)" stroke-width="3.4"/><path d="M36 74 Q34 52 60 44" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/><path d="M164 70 Q166 52 142 44" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="2.4" stroke-linecap="round"/></g>' +
+    '<ellipse cx="120" cy="196" rx="86" ry="5" fill="none" stroke="#E8B66E" stroke-opacity=".6" stroke-width="1.4"/><ellipse cx="120" cy="196" rx="52" ry="2.6" fill="#E8B66E" opacity=".35"/></svg>';
+}
+var HLV = { liqA: 0, liqB: 0 };
+function liqY(l) { return (172 - 138 * l).toFixed(1); }
+function lvl(sc, cap) { return 0.06 + 0.84 * Math.min(1, sc / cap); }
+function tilt() {
+  var s = scores(), cap = Math.max(300, Math.max(s.russ, s.braian) * 1.2);
+  var L = lvl(s.russ, cap), R = lvl(s.braian, cap);
+  requestAnimationFrame(function () {
+    var a = document.getElementById("liqA"), b = document.getElementById("liqB");
+    if (a) a.style.transform = "translateY(" + liqY(L) + "px)";
+    if (b) b.style.transform = "translateY(" + liqY(R) + "px)";
+    HLV.liqA = L; HLV.liqB = R;
+  });
+  var tot = s.russ + s.braian, p = tot ? Math.round(s.russ / tot * 1000) / 10 : 50;
+  var fr = document.getElementById("fr"), fb = document.getElementById("fb"), ind = document.getElementById("ind");
+  if (fr) { fr.style.width = p + "%"; fb.style.width = (100 - p) + "%"; ind.style.left = p + "%"; }
+}
+function header(big) {
   var ph = phase(), t = todayStr(), total = dnum(END) - dnum(START) + 1, n = dnum(t) - dnum(START) + 1;
   var sub = ph === "live" ? "DÍA " + n + " DE " + total : (ph === "ended" ? "TERMINÓ" : "EMPIEZA EL " + dlabel(START).toUpperCase());
-  return '<div class="top"><img class="logo" src="logo.png" alt="A tu servicio"><div class="tools"><button class="theme-btn" data-act="sound" type="button" aria-label="' + (soundOn ? "Silenciar sonidos" : "Activar sonidos") + '">' + (soundOn ? ICON_SPK : ICON_MUTE) + '</button><button class="theme-btn" data-act="theme" type="button" aria-label="' + (theme === "light" ? "Cambiar a modo noche" : "Cambiar a modo día") + '">' + (theme === "light" ? ICON_MOON : ICON_SUN) + '</button><button class="theme-btn" data-act="who" type="button" aria-label="Salir de la cuenta de ' + esc(NAMES[me]) + '">' + ICON_USER + '</button></div></div><div class="season"><span class="vl"></span><div><small>TEMPORADA 1</small><b>' + esc(dlabel(START).toUpperCase()) + " · " + esc(dlabel(END).toUpperCase()) + '</b><em>' + sub + " · " + esc(NAMES[me].toUpperCase()) + '</em></div><span class="vl"></span></div>';
+  var tools = '<div class="tools"><button class="theme-btn" data-act="sound" type="button" aria-label="' + (soundOn ? "Silenciar sonidos" : "Activar sonidos") + '">' + (soundOn ? ICON_SPK : ICON_MUTE) + '</button><button class="theme-btn" data-act="theme" type="button" aria-label="' + (theme === "light" ? "Cambiar a modo noche" : "Cambiar a modo día") + '">' + (theme === "light" ? ICON_MOON : ICON_SUN) + '</button><button class="theme-btn" data-act="who" type="button" aria-label="Salir de la cuenta de ' + esc(NAMES[me]) + '">' + ICON_USER + '</button></div>';
+  var season = '<div class="season"><span class="vl"></span><div><small>TEMPORADA 1</small><b>' + esc(dlabel(START).toUpperCase()) + " · " + esc(dlabel(END).toUpperCase()) + '</b><em>' + sub + " · " + esc(NAMES[me].toUpperCase()) + '</em></div><span class="vl"></span></div>';
+  if (big) return '<div class="top big">' + tools + '</div><div class="hero">' + heartSvg() + '<div class="wm"><div class="wm1"><i></i><span>A TU</span><i></i></div><div class="wm2">SERVICIO</div></div></div>' + season;
+  return '<div class="top mini"><div class="wm mini"><div class="wm1"><span>A TU</span></div><div class="wm2">SERVICIO</div></div>' + tools + '</div>' + season;
 }
 function prizeCard(w) {
   var r = w === "russ";
@@ -400,7 +441,7 @@ function viewPrize() {
 }
 
 function viewHome() {
-  var s = scores(), ph = phase(), out = header();
+  var s = scores(), ph = phase(), out = header(true);
   if (!canWrite) out += '<div class="banner red">Solo puedes mirar. Pide a quien compartió la página que te dé permiso para editar.</div>';
   if (ph === "practice") out += '<div class="banner">Modo práctica hasta el ' + dlabel(START) + '. Lo que registren ahora sirve para probar y no cuenta en el duelo.</div>';
   if (ph === "ended") {
@@ -411,10 +452,10 @@ function viewHome() {
     var did = logs.some(function (l) { return l.by === me && l.date === todayStr(); });
     if (!did) out += '<div class="banner">Aún no registraste tu día. <button data-act="nav" data-v="day" type="button">Completar ahora</button></div>';
   }
-  out += '<div class="arena"><div class="scores"><div class="sc r"><span>RUSS</span><b>' + s.russ + '</b><small>PUNTOS</small></div><div class="sc b"><span>BRAIAN</span><b>' + s.braian + '</b><small>PUNTOS</small></div></div>' + SCALE + '<p class="cap2">DOS JUGADORES · UN DESAFÍO</p>' +
-    '<div class="barw"><div class="bar"><div class="fill fr" id="fr"></div><div class="fill fb" id="fb"></div><div class="cen"></div><div class="ind" id="ind"></div></div></div>' +
+  out += '<div class="duel"><div class="scs"><div class="sc r"><span>RUSS</span><b>' + s.russ + '</b><small>GESTOS</small></div><i class="vsep"></i><div class="sc b"><span>BRAIAN</span><b>' + s.braian + '</b><small>GESTOS</small></div></div>' +
+    '<div class="bar2"><div class="fill2 fr" id="fr"></div><div class="fill2 fb" id="fb"></div><div class="mk" id="ind"></div></div>' +
     '<p class="lead">' + (s.russ === s.braian ? "Van empatados" : (s.russ > s.braian ? "Russ va ganando por " + (s.russ - s.braian) + " millas" : "Braian va ganando por " + (s.braian - s.russ) + " millas")) + "</p></div>" +
-    '<div class="pzs">' + prizeCard("russ") + prizeCard("braian") + "</div>";
+    '<div class="sect"><i></i><span>PREMIOS</span><i></i></div><div class="pzs">' + prizeCard("russ") + prizeCard("braian") + "</div>";
   var pend = pendingForMe();
   if (pend.length) {
     var sum = pend.reduce(function (a, l) { return a + (l.pts || 0); }, 0);
@@ -521,7 +562,7 @@ function render() {
   var html = view === "home" ? viewHome() : (view === "prize" ? viewPrize() : (view === "day" ? viewDay() : (view === "conf" ? viewConf() : viewHist())));
   app.innerHTML = html;
   document.getElementById("sumhost").innerHTML = sumbar();
-  if (view === "home") { var s = scores(); tilt(s.russ - s.braian); }
+  if (view === "home") tilt();
   hydratePhotos();
 }
 var overlayPic = "";
