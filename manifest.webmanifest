@@ -1,7 +1,7 @@
 {
-  "name": "Millas",
-  "short_name": "Millas",
-  "description": "El duelo de millas de Russ y Braian",
+  "name": "A tu servicio",
+  "short_name": "A tu servicio",
+  "description": "El duelo de Russ y Braian",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
