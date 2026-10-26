@@ -335,6 +335,13 @@ h2.sec { font-family: var(--serif); font-size: 22px; color: #E8B66E; letter-spac
 .row.sur.sel { background: linear-gradient(160deg, rgba(210,90,100,.6), rgba(110,40,44,.8)); border-color: #FFC9C9; }
 .row.off { opacity: .6; }
 .sumbar { background: rgba(31,19,13,.96); border-top: 1px solid rgba(232,182,110,.35); backdrop-filter: blur(6px); } .sumbar .tot b { font-family: var(--serif); font-weight: 600; }
+
+/* seleccion: tarjeta marfil */
+.row.sel, .row.sel.t80, .row.sel.t100 { transform: scale(1.015); border-color: #fff; background: linear-gradient(160deg, #F8F1E8, #E9DCCB); box-shadow: 0 8px 22px rgba(0,0,0,.45); }
+.row.sel .nm { color: #33221a; } .row.sel .nm small { color: #A83245; }
+.row.sel .chk { background: #A83245; border-color: #A83245; color: #fff; box-shadow: none; }
+.row.sel .pts { background: #fff; border-color: #C9A16A; color: #7a4a10; }
+.row.sur.sel { background: linear-gradient(160deg, #FBEFE9, #EBD3CA); border-color: #fff; }
 </style>
 </head>
 <body>
@@ -547,7 +554,7 @@ function viewDay() {
       var cls = "row" + tier(p) + (mult === 2 ? " sur" : "") + (on ? " sel" : "") + (blocked ? " off" : "");
       var chip = "";
       if (lg) chip = lg.status === "confirmed" ? '<span class="tag conf">Confirmada</span>' : (lg.status === "pending" ? '<span class="tag pend">Enviada</span>' : '<span class="tag rej">No confirmada</span>');
-      out += '<button class="' + cls + '" type="button" data-act="tog" data-id="' + esc(t.id) + '"' + (blocked ? " disabled" : "") + '><span class="chk">&#10003;</span><span class="nm">' + esc(t.name) + "<small>" + esc(t.who === "Ambos" ? "De los dos" : "Tuya") + (mult === 2 ? " · Sorpresa" : "") + '</small></span>' + chip + '<span class="pts"><img src="p-monedas.png" alt="">+' + p + "</span></button>";
+      out += '<button class="' + cls + '" type="button" data-act="tog" data-id="' + esc(t.id) + '"' + (blocked ? " disabled" : "") + '><span class="chk">&#10003;</span><span class="nm">' + esc(t.name) + (mult === 2 ? "<small>Sorpresa x2</small>" : "") + '</span>' + chip + '<span class="pts"><img src="p-monedas.png" alt="">+' + p + "</span></button>";
       if (on && assets) {
         var ph2 = photos[t.id];
         out += '<div class="photo-row">' + (ph2 ? '<img class="thumb" alt="Foto de prueba" src="' + ph2.url + '"><button class="chip" data-act="unphoto" data-id="' + esc(t.id) + '" type="button">Quitar foto</button>' : '<label>Agregar foto de prueba<input type="file" accept="image/*" data-photo="' + esc(t.id) + '"></label>') + "</div>";
