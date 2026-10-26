@@ -314,6 +314,27 @@ nav { background: #1c120d; border-top: 1px solid rgba(232,182,110,.25); } nav bu
 nav button { font-size: 11.5px; padding: 6px 4px 5px; } nav svg { width: 22px; height: 22px; }
 .banner { margin-top: 0; }
 :root[data-theme="light"] .titulo { filter: brightness(.55) saturate(1.3); }
+
+/* ===== lista de tareas: tarjetas de lujo ===== */
+h2.sec { font-family: var(--serif); font-size: 22px; color: #E8B66E; letter-spacing: .04em; margin: 18px 0 10px; }
+.rows { gap: 9px; }
+.row, .row.t80, .row.t100 { gap: 12px; border-radius: 18px; padding: 11px 12px; border: 1px solid rgba(232,182,110,.35); background: linear-gradient(160deg, rgba(58,38,24,.75), rgba(34,21,14,.85)); box-shadow: none; animation: none; transition: transform .15s, border-color .2s, background .25s, box-shadow .25s; }
+.row.t80 { border-color: rgba(224,112,124,.5); } .row.t100 { border-color: rgba(232,182,110,.6); }
+.row .nm { font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.15; color: #F2E3CF; }
+.row .nm small { font-family: var(--body); font-weight: 400; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.chk { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid rgba(232,182,110,.7); background: rgba(0,0,0,.25); font-size: 18px; transition: all .2s; }
+.pts { display: inline-flex; align-items: center; gap: 4px; border: 1px solid rgba(232,182,110,.55); border-radius: 20px; padding: 3px 10px 3px 5px; font-size: 14px; font-weight: 500; color: #FFE9B8; background: rgba(0,0,0,.25); }
+.pts img { width: 20px; height: 20px; object-fit: contain; }
+.row.t80 .pts, .row.t100 .pts { color: #FFE9B8; }
+.row.sel, .row.sel.t80, .row.sel.t100 { transform: scale(1.015); border-color: #FFE4A0; background: linear-gradient(160deg, rgba(190,130,52,.62), rgba(110,62,28,.78)); box-shadow: 0 0 0 1px rgba(255,228,160,.55), 0 10px 26px rgba(232,182,110,.28); }
+.row.sel .nm { color: #FFF3DA; }
+.row.sel .chk { background: linear-gradient(180deg, #FFE4A0, #D9974D); border-color: #FFF1C8; color: #3a1c06; box-shadow: 0 0 14px rgba(255,228,160,.6); animation: pop .25s ease-out; }
+.row.sel .pts { background: rgba(60,30,10,.55); border-color: #FFE4A0; }
+@keyframes pop { 0% { transform: scale(.6); } 70% { transform: scale(1.18); } 100% { transform: scale(1); } }
+.row.sur { border-color: rgba(238,140,150,.8); background: linear-gradient(160deg, rgba(150,50,50,.5), rgba(48,26,20,.85)); }
+.row.sur.sel { background: linear-gradient(160deg, rgba(210,90,100,.6), rgba(110,40,44,.8)); border-color: #FFC9C9; }
+.row.off { opacity: .6; }
+.sumbar { background: rgba(31,19,13,.96); border-top: 1px solid rgba(232,182,110,.35); backdrop-filter: blur(6px); } .sumbar .tot b { font-family: var(--serif); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -526,7 +547,7 @@ function viewDay() {
       var cls = "row" + tier(p) + (mult === 2 ? " sur" : "") + (on ? " sel" : "") + (blocked ? " off" : "");
       var chip = "";
       if (lg) chip = lg.status === "confirmed" ? '<span class="tag conf">Confirmada</span>' : (lg.status === "pending" ? '<span class="tag pend">Enviada</span>' : '<span class="tag rej">No confirmada</span>');
-      out += '<button class="' + cls + '" type="button" data-act="tog" data-id="' + esc(t.id) + '"' + (blocked ? " disabled" : "") + '><span class="chk">&#10003;</span><span class="nm">' + esc(t.name) + "<small>" + esc(t.who === "Ambos" ? "De los dos" : "Tuya") + (mult === 2 ? " · Sorpresa" : "") + '</small></span>' + chip + '<span class="pts">+' + p + "</span></button>";
+      out += '<button class="' + cls + '" type="button" data-act="tog" data-id="' + esc(t.id) + '"' + (blocked ? " disabled" : "") + '><span class="chk">&#10003;</span><span class="nm">' + esc(t.name) + "<small>" + esc(t.who === "Ambos" ? "De los dos" : "Tuya") + (mult === 2 ? " · Sorpresa" : "") + '</small></span>' + chip + '<span class="pts"><img src="p-monedas.png" alt="">+' + p + "</span></button>";
       if (on && assets) {
         var ph2 = photos[t.id];
         out += '<div class="photo-row">' + (ph2 ? '<img class="thumb" alt="Foto de prueba" src="' + ph2.url + '"><button class="chip" data-act="unphoto" data-id="' + esc(t.id) + '" type="button">Quitar foto</button>' : '<label>Agregar foto de prueba<input type="file" accept="image/*" data-photo="' + esc(t.id) + '"></label>') + "</div>";
@@ -541,7 +562,7 @@ function sumbar() {
   if (view !== "day" || phase() === "ended" || !tasks.length) return "";
   var ids = Object.keys(sel).filter(function (k) { return sel[k]; }), sid = surpriseId(me), tot = 0;
   ids.forEach(function (k) { var t = taskById(k); if (t) tot += t.pts * (k === sid ? 2 : 1); });
-  return '<div class="sumbar"><div class="in"><div class="tot"><span>' + ids.length + (ids.length === 1 ? " tarea" : " tareas") + " por enviar</span><b>" + tot + ' millas</b></div><button class="btn" data-act="send" type="button"' + ((!ids.length || sending || !canWrite) ? " disabled" : "") + ">" + (sending ? "Enviando…" : "Enviar a " + esc(NAMES[other(me)]) + " para confirmar") + "</button></div></div>";
+  return '<div class="sumbar"><div class="in"><div class="tot"><span>' + ids.length + (ids.length === 1 ? " tarea" : " tareas") + " por enviar</span><b>" + tot + ' gestos</b></div><button class="btn" data-act="send" type="button"' + ((!ids.length || sending || !canWrite) ? " disabled" : "") + ">" + (sending ? "Enviando…" : "Enviar a " + esc(NAMES[other(me)]) + " para confirmar") + "</button></div></div>";
 }
 
 function viewConf() {
