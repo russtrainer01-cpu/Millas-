@@ -566,7 +566,7 @@ function viewDay() {
   });
   if (canWrite) {
     if (addOpen) {
-      out += '<div class="addf"><h3>Nueva tarea</h3><input class="pin" id="nt-name" type="text" maxlength="70" placeholder="Nombre de la tarea"><div class="two"><select class="pin" id="nt-cat">' + CATS.map(function (c) { return "<option>" + esc(c) + "</option>"; }).join("") + '</select><input class="pin" id="nt-pts" type="text" inputmode="numeric" placeholder="Gestos"></div><select class="pin" id="nt-who"><option value="Russ">La hace Russ</option><option value="Braian">La hace Braian</option><option value="Ambos">La hacen los dos</option></select><button class="btn" data-act="addtask" type="button">Guardar tarea</button><button class="btn ghost" data-act="addcancel" type="button" style="margin-top:8px">Cancelar</button></div>';
+      out += '<div class="addf"><h3>Nueva tarea</h3><input class="pin" id="nt-name" type="text" maxlength="70" placeholder="Nombre de la tarea"><div class="two"><select class="pin" id="nt-cat">' + CATS.map(function (c) { return "<option>" + esc(c) + "</option>"; }).join("") + '</select><input class="pin" id="nt-pts" type="text" inputmode="numeric" placeholder="Gestos"></div><select class="pin" id="nt-who"><option value="yo">La hago yo</option><option value="otro">La hace mi pareja</option><option value="Ambos">La hacemos los dos</option></select><button class="btn" data-act="addtask" type="button">Guardar tarea</button><button class="btn ghost" data-act="addcancel" type="button" style="margin-top:8px">Cancelar</button></div>';
     } else out += '<button class="btn ghost" data-act="addopen" type="button" style="margin:16px 0 90px">+ Agregar tarea</button>';
   }
   return out;
@@ -729,7 +729,7 @@ document.addEventListener("click", async function (ev) {
     var nm = (document.getElementById("nt-name").value || "").trim(), pt = parseInt(document.getElementById("nt-pts").value, 10);
     if (!nm || !(pt > 0)) { toast("Escribe el nombre y los gestos"); return; }
     var mx = tasks.reduce(function (m, t) { return Math.max(m, t.order || 0); }, 0);
-    try { await db.doc("tasks/t" + Date.now().toString(36)).set({ name: nm, cat: document.getElementById("nt-cat").value, pts: pt, who: document.getElementById("nt-who").value, order: mx + 1, active: true }); addOpen = false; toast("Tarea agregada"); render(); } catch (e) { toast("No se pudo guardar"); }
+    try { await db.doc("tasks/t" + Date.now().toString(36)).set({ name: nm, cat: document.getElementById("nt-cat").value, pts: pt, who: (function (v) { return v === "yo" ? NAMES[me] : (v === "otro" ? NAMES[other(me)] : "Ambos"); })(document.getElementById("nt-who").value), order: mx + 1, active: true }); addOpen = false; toast("Tarea agregada"); render(); } catch (e) { toast("No se pudo guardar"); }
   }
   else if (act === "pzicon") { await savePrize(el.getAttribute("data-w"), { icon: el.getAttribute("data-i") }); }
   else if (act === "pzsave") { var pn = document.getElementById("pzname"); if (pn && pn.value.trim()) await savePrize(el.getAttribute("data-w"), { name: pn.value.trim() }); }
