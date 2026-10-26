@@ -342,6 +342,7 @@ h2.sec { font-family: var(--serif); font-size: 22px; color: #E8B66E; letter-spac
 .row.sel .chk { background: #A83245; border-color: #A83245; color: #fff; box-shadow: none; }
 .row.sel .pts { background: #fff; border-color: #C9A16A; color: #7a4a10; }
 .row.sur.sel { background: linear-gradient(160deg, #FBEFE9, #EBD3CA); border-color: #fff; }
+.addf { border: 1px solid rgba(232,182,110,.5); border-radius: 18px; padding: 14px; margin: 16px 0 100px; background: rgba(0,0,0,.2); } .addf h3 { font-family: var(--serif); font-size: 22px; color: #E8B66E; margin: 0 0 10px; } .addf .two { display: grid; grid-template-columns: 1.5fr 1fr; gap: 8px; } .addf select.pin { text-align: left; }
 </style>
 </head>
 <body>
@@ -357,6 +358,7 @@ h2.sec { font-family: var(--serif); font-size: 22px; color: #E8B66E; letter-spac
 var SB_URL = "https://yarqttoduryzhinnxgio.supabase.co", SB_KEY = "sb_publishable_IKFhc2x6r1AdB0IS8b4Nlw_TwowDq34";
 var TZ = "America/Argentina/Buenos_Aires", START = "2026-10-26", END = "2026-11-26";
 var NAMES = { russ: "Russ", braian: "Braian" };
+var addOpen = false;
 var CATS = ["Hogar", "Comidas", "Auto y zapatillas", "Niños", "Pareja", "Otras"];
 var MAXD = 300;
 var db = null, user = null, assets = null, uid = null, canWrite = true;
@@ -562,6 +564,11 @@ function viewDay() {
     });
     out += "</div>";
   });
+  if (canWrite) {
+    if (addOpen) {
+      out += '<div class="addf"><h3>Nueva tarea</h3><input class="pin" id="nt-name" type="text" maxlength="70" placeholder="Nombre de la tarea"><div class="two"><select class="pin" id="nt-cat">' + CATS.map(function (c) { return "<option>" + esc(c) + "</option>"; }).join("") + '</select><input class="pin" id="nt-pts" type="text" inputmode="numeric" placeholder="Gestos"></div><select class="pin" id="nt-who"><option value="Russ">La hace Russ</option><option value="Braian">La hace Braian</option><option value="Ambos">La hacen los dos</option></select><button class="btn" data-act="addtask" type="button">Guardar tarea</button><button class="btn ghost" data-act="addcancel" type="button" style="margin-top:8px">Cancelar</button></div>';
+    } else out += '<button class="btn ghost" data-act="addopen" type="button" style="margin:16px 0 90px">+ Agregar tarea</button>';
+  }
   return out;
 }
 
@@ -716,6 +723,14 @@ document.addEventListener("click", async function (ev) {
   else if (act === "login" || act === "signup") doAuth(act);
   else if (act === "prize") { prizeOf = el.getAttribute("data-w"); view = "prize"; render(); window.scrollTo(0, 0); }
   else if (act === "home") { view = "home"; render(); window.scrollTo(0, 0); }
+  else if (act === "addopen") { addOpen = true; render(); }
+  else if (act === "addcancel") { addOpen = false; render(); }
+  else if (act === "addtask") {
+    var nm = (document.getElementById("nt-name").value || "").trim(), pt = parseInt(document.getElementById("nt-pts").value, 10);
+    if (!nm || !(pt > 0)) { toast("Escribe el nombre y los gestos"); return; }
+    var mx = tasks.reduce(function (m, t) { return Math.max(m, t.order || 0); }, 0);
+    try { await db.doc("tasks/t" + Date.now().toString(36)).set({ name: nm, cat: document.getElementById("nt-cat").value, pts: pt, who: document.getElementById("nt-who").value, order: mx + 1, active: true }); addOpen = false; toast("Tarea agregada"); render(); } catch (e) { toast("No se pudo guardar"); }
+  }
   else if (act === "pzicon") { await savePrize(el.getAttribute("data-w"), { icon: el.getAttribute("data-i") }); }
   else if (act === "pzsave") { var pn = document.getElementById("pzname"); if (pn && pn.value.trim()) await savePrize(el.getAttribute("data-w"), { name: pn.value.trim() }); }
   else if (act === "theme") { theme = theme === "light" ? "dark" : "light"; applyTheme(); render(); }

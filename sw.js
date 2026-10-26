@@ -1,5 +1,5 @@
 // Service worker mínimo: la app se abre aunque la red tarde; los datos siempre vienen en vivo de Supabase.
-const CACHE = "atuservicio-v7";
+const CACHE = "atuservicio-v8";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "logo.png"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
